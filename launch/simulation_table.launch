@@ -1,4 +1,5 @@
 <launch>
+    <env name="GAZEBO_MODEL_PATH" value="$(find panda_simulation)/models:$(optenv GAZEBO_MODEL_PATH)" />
     <!-- new gripper_center link argument -->
     <arg name="gripper_center" default="true"/>
 
@@ -23,11 +24,11 @@
         <arg name="world_name" value="$(find panda_simulation)/worlds/table_blocks.world"/>
     </include>
 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -x 0.0 -y 0.00 -z 0.615 -model panda" />
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -x -0.20 -y 0.00 -z 0.90 -model panda" />
 
     <!-- Load joint controller configurations from YAML file to parameter server -->
     <rosparam file="$(find panda_simulation)/config/panda_control.yaml" command="load" />
-    <!-- <rosparam file="$(find panda_simulation)/config/gazebo_ros_control_params.yaml" command="load"/> -->
+    <rosparam file="$(find panda_simulation)/config/gazebo_ros_control_params.yaml" command="load"/>
 
     <!-- load the controllers -->
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="joint_state_controller panda_arm_controller" />

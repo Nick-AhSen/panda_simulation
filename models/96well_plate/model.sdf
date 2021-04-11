@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="96 well plate">
+    <static>false</static>
+    <link name="link">
+      <!-- Visual -->
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://96well_plate/meshes/96well_plate.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <!-- Inertial -->
+      <inertial>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>1.1248e-01</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.3149e-01</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.3149e-01</izz>
+        </inertia>
+      </inertial>
+
+      <!-- collision -->
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://96well_plate/collision/96well_plate.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+						<contact>
+							<ode>
+								<soft_cfm>0.2</soft_cfm>
+								<soft_erp>0.2</soft_erp>
+								<kp>1e5</kp>
+								<kd>1.0</kd>
+							</ode>
+						</contact>
+
+						<friction>
+							<ode>
+								<mu>1e16</mu>
+								<mu2>1e16</mu2>
+								<fdir1>1.000000 1.000000 1.000000</fdir1>
+							</ode>
+						</friction>
+						<contact>
+							<ode>
+								<max_vel>0.01</max_vel>
+								<min_depth>0.001</min_depth>
+							</ode>
+						</contact>
+					</surface>
+      </collision>
+
+      
+    </link>
+  </model>
+  
+</sdf>
