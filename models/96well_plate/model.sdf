@@ -14,7 +14,7 @@
 
       <!-- Inertial -->
       <inertial>
-        <mass>0.5</mass>
+        <mass>0.2</mass>
         <inertia>
           <ixx>1.1248e-01</ixx>
           <ixy>0.0</ixy>
